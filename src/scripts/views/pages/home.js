@@ -51,6 +51,7 @@ const Home = {
     } catch (error) {
       const main = document.querySelector('main');
       main.innerHTML = createMspPageTemplate({
+        icon: 'autorenew',
         title: '  Error request',
         message: `Error: ${error}`,
         button: {

@@ -65,12 +65,12 @@ const createPlaceholderItemTemplate = () => `<div class="card placeholder">
 </div>`;
 
 const createMenuItemTemplate = (menu, type) => `<div class="menu">
-<img src="images/${type}-default.png" alt="">
+<img src="images/${type}-default.png" alt="${type} image default">
 <span>${menu.name}</span>
 </div>`;
 
 const createReviewItemTemplate = (review) => `<div class="review">
-<img src="images/user-default.png"  alt="">
+<img src="images/user-default.png"  alt="profile user default">
     <div class="review-box">
     <span>${review.name}</span>
     <small>${review.date}</small>
@@ -79,7 +79,7 @@ const createReviewItemTemplate = (review) => `<div class="review">
 </div>`;
 
 const createReviewItemPlaceholderTemplate = () => `<div class="review placeholder">
-<img src="images/user-default.png" alt="" >
+<img src="images/user-default.png" alt="profile user default" >
     <div class="review-box">
     <div class="line big"></div>
     <div class="line medium"></div>
@@ -95,17 +95,19 @@ const createCategoriesTemplate = (categories) => {
   }); return template;
 };
 
-const createMspPageTemplate = ({ title, message, button = {} }) => {
-  const a = typeof button.element === 'string' && button.element === 'a' ? 'a' : 'button';
+const createMspPageTemplate = ({
+  icon, title, message, button = {},
+}) => {
+  const element = typeof button.element === 'string' && button.element === 'a' ? 'a' : 'button';
   return `
     <div class="page-info"><div>
-    <i class="material-icons">hourglass_empty</i>
+    <i class="material-icons">${typeof icon === 'string' ? icon : 'hourglass_empty'}</i>
     <span>${title}</span>
     <p>${message}</p>
-    ${typeof button === 'object' ? `<${a} class="btn border" 
+    ${typeof button === 'object' ? `<${element} class="btn border" 
     ${typeof button.href === 'string' ? `href="${button.href}"` : ''}
     ${typeof button.id === 'string' ? `id="${button.id}"` : ''}
-    >${button.name}</${a}>` : ''}
+    >${button.name}</${element}>` : ''}
     </div>
     </div>
   `;
