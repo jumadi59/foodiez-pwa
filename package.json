@@ -14,6 +14,8 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.10.5",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-decorators": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "babel-loader": "^8.1.0",
     "copy-webpack-plugin": "^6.0.3",
@@ -39,6 +41,7 @@
   },
   "dependencies": {
     "idb": "^5.0.6",
+    "lit-element": "^2.4.0",
     "regenerator-runtime": "^0.13.5",
     "serviceworker-webpack-plugin": "^1.0.1",
     "workbox-cacheable-response": "^5.1.4",
