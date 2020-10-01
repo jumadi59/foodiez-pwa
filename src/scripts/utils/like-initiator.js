@@ -15,7 +15,7 @@ const LikeButtonInitiator = {
       } else {
         await RestaurantIdb.putRestaurant(this._restaurant);
       }
-      this._renderButton();
+      await this._renderButton();
     });
   },
 

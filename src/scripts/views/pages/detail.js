@@ -26,7 +26,7 @@ const Detail = {
     <div class="reviews" id="reviews">
       <h3>Reviews</h3>
       <div class="review">
-        <img src="images/user-default.png" >
+        <img src="images/user-default.png" alt="user profile default">
         <div class="review-box">
         <div class="input-field">
         <label for="input-name">Name</label>

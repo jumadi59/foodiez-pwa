@@ -113,7 +113,6 @@ main.container>h2 {
     font-size: 0.9em;
     text-transform: uppercase;
     cursor: pointer;
-    transition: all 1s;
     margin: 10px;
     transition: all ease 1s;
 }
@@ -327,7 +326,7 @@ button.menu-toggle {
 }
 
 .hero .text p {
-    margin: 0px 0px 40px;
+    margin: 0 0 40px;
     line-height: 1.3;
 }
 
@@ -959,7 +958,7 @@ footer>.center {
 
     .snackbar{
         bottom: 25px;
-        left: 0px;
+        left: 0;
         right: unset;
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;

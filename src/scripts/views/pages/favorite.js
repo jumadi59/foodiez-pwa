@@ -7,7 +7,7 @@ const Favorite = {
     nav.classList.add('nav-white');
 
     return `<main id="maincontent" class="container bottom-navbar">
-    <h2 class="center">Favorite Restaurant</h2>
+    <h1 class="center" style="padding-top: 20px;">Favorite Restaurant</h1>
     <div class="grid" id="restaurants"></div>
     </main>`;
   },
