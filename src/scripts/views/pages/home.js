@@ -20,7 +20,7 @@ const Home = {
     });
 
     return `${createHeroTemplate({
-      heroImg: 'hero-image_4.jpg',
+      heroImg: 'hero-image_4',
       title: 'Tasty & Delicious Food',
       description: 'We love food, lots of different food, just like you',
     })}

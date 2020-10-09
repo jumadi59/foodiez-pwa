@@ -54,7 +54,7 @@ const Detail = {
     });
     const foods = document.querySelector('#foods');
     foods.classList.add('placeholder');
-    foods.innerHTML = '<div class="line ful"></div>';
+    foods.innerHTML = '<div class="line full"></div>';
     const drinks = document.querySelector('#drinks');
     drinks.classList.add('placeholder');
     drinks.innerHTML = '<div class="line full"></div>';
@@ -91,7 +91,7 @@ const Detail = {
     const content = document.querySelector('#content-detail');
     content.innerHTML = createRestaurantDetailTemplate(restaurant);
     content.classList.remove('placeholder');
-    Like.init({ container: content, data: restaurant });
+    Like.init({ container: content.querySelector('.content-box'), data: restaurant });
     const tab = document.querySelector('.container-tabs');
     Tab.init({
       containerTab: tab,

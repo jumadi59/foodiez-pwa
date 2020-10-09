@@ -1,3 +1,4 @@
+import { createLikeButtonTemplate } from '../views/templates/template-creator';
 import RestaurantIdb from '../data/restaurant-db';
 
 const LikeButtonInitiator = {
@@ -6,17 +7,6 @@ const LikeButtonInitiator = {
     this._restaurant = data;
 
     await this._renderButton();
-
-    const likeButton = this._container.querySelector('.like');
-    likeButton.addEventListener('click', async () => {
-      const { id } = this._restaurant;
-      if (await this._isRestaurantExist(id)) {
-        await RestaurantIdb.deleteRestaurant(id);
-      } else {
-        await RestaurantIdb.putRestaurant(this._restaurant);
-      }
-      await this._renderButton();
-    });
   },
 
   async _renderButton() {
@@ -36,15 +26,33 @@ const LikeButtonInitiator = {
   },
 
   _renderLike() {
-    const likeButton = this._container.querySelector('.like');
-    likeButton.classList.remove('liked');
-    likeButton.innerHTML = "<i class='material-icons'>favorite_border</i>";
+    this._crearElement();
+    this._container.innerHTML += createLikeButtonTemplate({ label: 'like this restaurant', iconName: 'favorite_border' });
+    const likeButton = this._container.querySelector('#likeButton');
+
+    likeButton.addEventListener('click', async () => {
+      await RestaurantIdb.putRestaurant(this._restaurant);
+      await this._renderButton();
+    });
   },
 
   _renderLiked() {
-    const likeButton = this._container.querySelector('.like');
-    likeButton.classList.add('liked');
-    likeButton.innerHTML = "<i class='material-icons'>favorite</i>";
+    this._crearElement();
+    this._container.innerHTML += createLikeButtonTemplate({ label: 'unlike this restaurant', iconName: 'favorite' });
+    const likeButton = this._container.querySelector('#likeButton');
+
+    likeButton.addEventListener('click', async () => {
+      const { id } = this._restaurant;
+      await RestaurantIdb.deleteRestaurant(id);
+      await this._renderButton();
+    });
+  },
+
+  _crearElement() {
+    const likeButton = this._container.querySelector('#likeButton');
+    if (likeButton) {
+      likeButton.parentNode.removeChild(likeButton);
+    }
   },
 };
 

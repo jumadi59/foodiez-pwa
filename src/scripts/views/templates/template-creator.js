@@ -2,7 +2,10 @@ import CONFIG from '../../globals/config';
 
 const createHeroTemplate = ({ heroImg, title, description }) => `<div class="hero">
 <div class="image-wrapper">
-    <img id="img-hero" src="images/heros/${heroImg}" alt="">
+    <img id="img-hero" src="images/heros/${heroImg}-large.jpg"
+    srcset="images/heros/${heroImg}-small.jpg 480w, images/heros/${heroImg}-medium.jpg 800w, images/heros/${heroImg}-large.jpg 1200w"
+    sizes="(max-width: 600px) 480px,(max-width: 1000px) 800px, 1200px"
+     alt="">
     <div class="trans"></div>
 </div>
 <div class="text">
@@ -12,10 +15,9 @@ const createHeroTemplate = ({ heroImg, title, description }) => `<div class="her
 </div>`;
 
 const createRestaurantDetailTemplate = (restaurant) => `<div class="image-box">
-<img src="${CONFIG.BASE_IMAGE_URL}large/${restaurant.pictureId}" alt="${restaurant.name}">
+<img class="lazyload" data-src="${CONFIG.BASE_IMAGE_URL}large/${restaurant.pictureId}" alt="${restaurant.name}">
 </div>
 <div class="content-box">
-<button class="like" aria-label="add or remove to like"></button>
 <h1>${restaurant.name}</h1>
 <custom-rating rating="${restaurant.rating}" max-rating="5"></custom-rating>
 <span class="address"><i class="material-icons">place</i> ${restaurant.address}, ${restaurant.city}</span>
@@ -28,7 +30,7 @@ const createRestaurantItemTemplate = (restaurant) => `<div class="card">
 <div class="city"><i class="material-icons">place</i> ${restaurant.city}</div>
 <a href="/#/detail/${restaurant.id}">
     <div class="image-box">
-        <img src="${CONFIG.BASE_IMAGE_URL}medium/${restaurant.pictureId}" alt="${restaurant.name}">
+        <img class="lazyload" data-src="${CONFIG.BASE_IMAGE_URL}medium/${restaurant.pictureId}" alt="${restaurant.name}">
     </div>
 </a>
 <div class="content-box">
@@ -65,12 +67,12 @@ const createPlaceholderItemTemplate = () => `<div class="card placeholder">
 </div>`;
 
 const createMenuItemTemplate = (menu, type) => `<div class="menu">
-<img src="images/${type}-default.png" alt="${type} image default">
+<img class="lazyload" data-src="images/${type}-default.png" alt="${type} image default">
 <span>${menu.name}</span>
 </div>`;
 
 const createReviewItemTemplate = (review) => `<div class="review">
-<img src="images/user-default.png"  alt="profile user default">
+<img class="lazyload" data-src="images/user-default.png"  alt="profile user default">
     <div class="review-box">
     <span>${review.name}</span>
     <small>${review.date}</small>
@@ -79,7 +81,7 @@ const createReviewItemTemplate = (review) => `<div class="review">
 </div>`;
 
 const createReviewItemPlaceholderTemplate = () => `<div class="review placeholder">
-<img src="images/user-default.png" alt="profile user default" >
+<img class="lazyload" data-src="images/user-default.png" alt="profile user default" >
     <div class="review-box">
     <div class="line big"></div>
     <div class="line medium"></div>
@@ -113,6 +115,11 @@ const createMspPageTemplate = ({
   `;
 };
 
+const createLikeButtonTemplate = ({ label, iconName }) => `
+  <button class="like" id ="likeButton" aria-label="${label}">
+  <i class='material-icons' name="${iconName}">${iconName}</i>
+  </button> `;
+
 export {
   createHeroTemplate,
   createRestaurantDetailTemplate,
@@ -124,4 +131,5 @@ export {
   createCategoriesTemplate,
   createReviewItemPlaceholderTemplate,
   createMspPageTemplate,
+  createLikeButtonTemplate,
 };

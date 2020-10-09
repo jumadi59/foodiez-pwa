@@ -5,6 +5,8 @@ import swRegister from './utils/sw-register';
 import './utils/rating';
 import CONFIG from './globals/config';
 import WebSocketInitiator from './utils/websocket-initiator';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 const app = new App({
   button: document.querySelector('.menu-toggle'),
