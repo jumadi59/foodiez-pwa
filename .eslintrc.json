@@ -17,6 +17,8 @@
         "no-underscore-dangle": 0,
         "no-restricted-globals": 0,
         "linebreak-style": 0,
-        "eol-last": ["error", "always"]
+        "eol-last": ["error", "always"],
+        "consistent-return": 0,
+        "no-prototype-builtins": 0
     }
 }
